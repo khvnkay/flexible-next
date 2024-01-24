@@ -1,4 +1,4 @@
-import { config, auth, g, connector } from '@grafbase/sdk';
+import { config, graph, connector } from '@grafbase/sdk';
 // const g = graph.Standalone()
 // // @ts-ignore
 // const User = g.model('User', {
@@ -46,11 +46,15 @@ import { config, auth, g, connector } from '@grafbase/sdk';
 
 
 
-const contentful = connector.GraphQL('Contentful', {
+
+const g = graph.Standalone()
+
+const pg = connector.Postgres('Postgres', {
   url: g.env('NEXT_PUBLIC_GRAFBASE_API_URL'),
-  headers: headers => {
-    headers.set('Authorization', `Bearer ${g.env('NEXT_PUBLIC_GRAFBASE_API_KEY')}`)
-  },
 })
 
-g.datasource(contentful)
+g.datasource(pg)
+
+export default config({
+  graph: g,
+})
