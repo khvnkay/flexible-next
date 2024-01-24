@@ -2,9 +2,9 @@ import { auth, config, connector, graph } from '@grafbase/sdk'
 
 const g = graph.Standalone()
 
-const clerk = auth.OpenIDConnect({
-  issuer: g.env('ISSUER_URL'),
-})
+// const clerk = auth.OpenIDConnect({
+//   issuer: g.env('ISSUER_URL'),
+// })
 
 const shopify = connector.GraphQL('Shopify', {
   url: g.env('NEXT_PUBLIC_GRAFBASE_API_URL'),
@@ -37,7 +37,7 @@ export default config({
     ],
   },
   auth: {
-    providers: [clerk],
+    // providers: [clerk],
     rules: rules => {
       rules.private()
     },
