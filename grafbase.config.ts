@@ -42,19 +42,12 @@ import { config, graph, connector } from '@grafbase/sdk';
 //   },
 // })
 
-
-
-
-
-
 const g = graph.Standalone()
 
 const pg = connector.Postgres('Postgres', {
-  url: g.env('NEXT_PUBLIC_GRAFBASE_API_URL'),
+  url: g.env('NEXT_PUBLIC_GRAFBASE_API_URL')
 })
-
 g.datasource(pg)
-
 export default config({
   graph: g,
 })
