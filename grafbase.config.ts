@@ -1,6 +1,5 @@
-import { config, auth } from '@grafbase/sdk';
-import { g } from '@grafbase/sdk'
-// const g = graph.Standalone()
+import { config, auth, graph } from '@grafbase/sdk';
+const g = graph.Standalone()
 // @ts-ignore
 const User = g.model('User', {
   name: g.string().length({ min: 2, max: 100 }),
